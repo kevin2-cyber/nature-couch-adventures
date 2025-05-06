@@ -17,7 +17,7 @@ const Hero = () => {
       <div 
         className="relative h-screen w-full bg-cover bg-center flex items-center"
         style={{ 
-          backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80')",
+          backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?auto=format&fit=crop&q=80')",
           backgroundAttachment: "fixed"
         }}
       >
@@ -32,7 +32,7 @@ const Hero = () => {
             <div className="flex flex-wrap gap-5">
               <Button 
                 onClick={scrollToTours}
-                className="bg-earth-500 hover:bg-earth-600 text-white text-lg py-6 px-8 font-medium rounded-md"
+                className="bg-earth-600 hover:bg-earth-700 text-white text-lg py-6 px-8 font-medium rounded-md"
               >
                 Explore Destinations
               </Button>
@@ -48,7 +48,7 @@ const Hero = () => {
       </div>
 
       {/* Featured destinations quick access */}
-      <div className="bg-natural-800 py-6 text-white">
+      <div className="bg-gradient-to-r from-earth-800 to-natural-800 py-6 text-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <h2 className="text-xl font-playfair mb-4 md:mb-0">
