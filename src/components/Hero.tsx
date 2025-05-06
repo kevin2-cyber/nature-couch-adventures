@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   const scrollToTours = () => {
@@ -11,53 +11,62 @@ const Hero = () => {
     }
   };
 
-  const scrollDown = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: "smooth"
-    });
-  };
-
   return (
-    <div 
-      className="relative h-screen w-full bg-cover bg-center flex items-center" 
-      style={{ 
-        backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80')",
-        backgroundAttachment: "fixed"
-      }}
-    >
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Discover the Beauty of Nature with Expert Guides
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8">
-            Unforgettable hiking experiences through the most breathtaking landscapes with comfort and safety
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Button 
-              onClick={scrollToTours}
-              className="bg-natural-600 hover:bg-natural-700 text-white text-lg py-6 px-8"
-            >
-              Explore Our Tours
-            </Button>
-            <Button 
-              variant="outline" 
-              className="bg-transparent border-2 border-white hover:bg-white/20 text-white hover:text-white text-lg py-6 px-8"
-            >
-              Learn More
-            </Button>
+    <div className="relative">
+      {/* Main hero slider/banner */}
+      <div 
+        className="relative h-screen w-full bg-cover bg-center flex items-center"
+        style={{ 
+          backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80')",
+          backgroundAttachment: "fixed"
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              Experience Ghana's Natural Beauty
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl">
+              Discover breathtaking landscapes and unforgettable adventures with expert local guides
+            </p>
+            <div className="flex flex-wrap gap-5">
+              <Button 
+                onClick={scrollToTours}
+                className="bg-earth-500 hover:bg-earth-600 text-white text-lg py-6 px-8 font-medium rounded-md"
+              >
+                Explore Destinations
+              </Button>
+              <Button 
+                variant="outline" 
+                className="bg-transparent border-2 border-white hover:bg-white/20 text-white hover:text-white text-lg py-6 px-8"
+              >
+                Plan Your Trip
+              </Button>
+            </div>
           </div>
         </div>
       </div>
 
-      <button 
-        onClick={scrollDown}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white hover:text-natural-300 transition-colors duration-300 animate-bounce"
-        aria-label="Scroll down"
-      >
-        <ArrowDown size={32} />
-      </button>
+      {/* Featured destinations quick access */}
+      <div className="bg-natural-800 py-6 text-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <h2 className="text-xl font-playfair mb-4 md:mb-0">
+              Popular Destinations
+            </h2>
+            <div className="flex flex-wrap gap-4 md:gap-8">
+              <a href="#" className="hover:text-earth-300 transition-colors font-medium">Mountain Peaks</a>
+              <a href="#" className="hover:text-earth-300 transition-colors font-medium">Forest Trails</a>
+              <a href="#" className="hover:text-earth-300 transition-colors font-medium">River Valleys</a>
+              <a href="#" className="hover:text-earth-300 transition-colors font-medium">Coastal Paths</a>
+              <a href="#" className="hover:text-earth-300 transition-colors font-medium">
+                View All
+                <ArrowRight size={16} className="inline-block ml-1" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
