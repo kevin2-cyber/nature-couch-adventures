@@ -155,3 +155,13 @@
   background-color: #f8f9fa;
   background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
 }
+
+/* Glass morphism effect for transparent elements */
+.glass {
+  @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-md;
+}
+
+/* Dropdown menu transparent styles */
+.dropdown-transparent {
+  @apply bg-transparent backdrop-blur-md bg-white/5 border border-white/10 text-white;
+}

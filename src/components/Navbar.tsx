@@ -51,22 +51,22 @@ const Navbar = () => {
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={isScrolled ? "text-natural-800" : "text-white"}>Destinations</NavigationMenuTrigger>
-                  <NavigationMenuContent>
+                  <NavigationMenuContent className="bg-transparent backdrop-blur-md bg-white/5 border border-white/10">
                     <div className="grid gap-3 p-4 w-[400px]">
-                      <NavigationMenuLink href="#mountains" className="block p-2 hover:bg-muted rounded">Mountains</NavigationMenuLink>
-                      <NavigationMenuLink href="#forests" className="block p-2 hover:bg-muted rounded">Forests</NavigationMenuLink>
-                      <NavigationMenuLink href="#rivers" className="block p-2 hover:bg-muted rounded">Rivers</NavigationMenuLink>
-                      <NavigationMenuLink href="#coasts" className="block p-2 hover:bg-muted rounded">Coastal Areas</NavigationMenuLink>
+                      <NavigationMenuLink href="#mountains" className="block p-2 hover:bg-white/20 rounded text-white">Mountains</NavigationMenuLink>
+                      <NavigationMenuLink href="#forests" className="block p-2 hover:bg-white/20 rounded text-white">Forests</NavigationMenuLink>
+                      <NavigationMenuLink href="#rivers" className="block p-2 hover:bg-white/20 rounded text-white">Rivers</NavigationMenuLink>
+                      <NavigationMenuLink href="#coasts" className="block p-2 hover:bg-white/20 rounded text-white">Coastal Areas</NavigationMenuLink>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={isScrolled ? "text-natural-800" : "text-white"}>Tours</NavigationMenuTrigger>
-                  <NavigationMenuContent>
+                  <NavigationMenuContent className="bg-transparent backdrop-blur-md bg-white/5 border border-white/10">
                     <div className="grid gap-3 p-4 w-[400px]">
-                      <NavigationMenuLink href="#day-tours" className="block p-2 hover:bg-muted rounded">Day Tours</NavigationMenuLink>
-                      <NavigationMenuLink href="#multi-day" className="block p-2 hover:bg-muted rounded">Multi-Day Adventures</NavigationMenuLink>
-                      <NavigationMenuLink href="#custom" className="block p-2 hover:bg-muted rounded">Custom Experiences</NavigationMenuLink>
+                      <NavigationMenuLink href="#day-tours" className="block p-2 hover:bg-white/20 rounded text-white">Day Tours</NavigationMenuLink>
+                      <NavigationMenuLink href="#multi-day" className="block p-2 hover:bg-white/20 rounded text-white">Multi-Day Adventures</NavigationMenuLink>
+                      <NavigationMenuLink href="#custom" className="block p-2 hover:bg-white/20 rounded text-white">Custom Experiences</NavigationMenuLink>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -111,40 +111,40 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-lg py-4 px-4 animate-fade-in">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-transparent backdrop-blur-md bg-white/5 shadow-lg py-4 px-4 animate-fade-in">
             <div className="flex flex-col space-y-4">
               <a 
                 href="#tours" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-natural-800 hover:text-earth-500 font-medium py-2"
+                className="text-white hover:text-earth-500 font-medium py-2"
               >
                 Destinations
               </a>
               <a 
                 href="#about" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-natural-800 hover:text-earth-500 font-medium py-2"
+                className="text-white hover:text-earth-500 font-medium py-2"
               >
                 Tours
               </a>
               <a 
                 href="#about" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-natural-800 hover:text-earth-500 font-medium py-2"
+                className="text-white hover:text-earth-500 font-medium py-2"
               >
                 About
               </a>
               <a 
                 href="#testimonials" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-natural-800 hover:text-earth-500 font-medium py-2"
+                className="text-white hover:text-earth-500 font-medium py-2"
               >
                 Testimonials
               </a>
               <a 
                 href="#contact" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-natural-800 hover:text-earth-500 font-medium py-2"
+                className="text-white hover:text-earth-500 font-medium py-2"
               >
                 Contact
               </a>
