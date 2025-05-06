@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,15 +53,41 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
+				natural: {
+					50: '#f4f7ed',
+					100: '#e6edda',
+					200: '#cedeb6',
+					300: '#b4cc8f',
+					400: '#9ab96d',
+					500: '#7fa548',
+					600: '#5e8035',
+					700: '#466027',
+					800: '#354820',
+					900: '#2b3a1b',
+				},
+				earth: {
+					50: '#f9f5ed',
+					100: '#f2eadc',
+					200: '#e6d2b8',
+					300: '#d7b38e',
+					400: '#c99767',
+					500: '#bd824b',
+					600: '#a16a3d',
+					700: '#825434',
+					800: '#6b4530',
+					900: '#5a3a2a',
+				},
+				sky: {
+					50: '#f0f7fc',
+					100: '#e0edf8',
+					200: '#c0dcf2',
+					300: '#90c4e9',
+					400: '#5aa7dd',
+					500: '#3389cf',
+					600: '#236cad',
+					700: '#1d568c',
+					800: '#1c4974',
+					900: '#1c3e61',
 				}
 			},
 			borderRadius: {
@@ -84,11 +111,26 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out'
+			},
+			fontFamily: {
+				'playfair': ['Playfair Display', 'serif'],
+				'montserrat': ['Montserrat', 'sans-serif']
 			}
 		}
 	},
