@@ -51,7 +51,7 @@ const Navbar = () => {
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={isScrolled ? "text-natural-800" : "text-white"}>Destinations</NavigationMenuTrigger>
-                  <NavigationMenuContent className="bg-transparent backdrop-blur-md bg-white/5 border border-white/10">
+                  <NavigationMenuContent className="glass dropdown-transparent">
                     <div className="grid gap-3 p-4 w-[400px]">
                       <NavigationMenuLink href="#mountains" className="block p-2 hover:bg-white/20 rounded text-white">Mountains</NavigationMenuLink>
                       <NavigationMenuLink href="#forests" className="block p-2 hover:bg-white/20 rounded text-white">Forests</NavigationMenuLink>
@@ -62,7 +62,7 @@ const Navbar = () => {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={isScrolled ? "text-natural-800" : "text-white"}>Tours</NavigationMenuTrigger>
-                  <NavigationMenuContent className="bg-transparent backdrop-blur-md bg-white/5 border border-white/10">
+                  <NavigationMenuContent className="glass dropdown-transparent">
                     <div className="grid gap-3 p-4 w-[400px]">
                       <NavigationMenuLink href="#day-tours" className="block p-2 hover:bg-white/20 rounded text-white">Day Tours</NavigationMenuLink>
                       <NavigationMenuLink href="#multi-day" className="block p-2 hover:bg-white/20 rounded text-white">Multi-Day Adventures</NavigationMenuLink>
@@ -111,7 +111,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-transparent backdrop-blur-md bg-white/5 shadow-lg py-4 px-4 animate-fade-in">
+          <div className="lg:hidden absolute top-full left-0 right-0 glass dropdown-transparent shadow-lg py-4 px-4 animate-fade-in">
             <div className="flex flex-col space-y-4">
               <a 
                 href="#tours" 
