@@ -71,17 +71,17 @@ const Navbar = () => {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <a href="#about" className={`flex items-center p-2 ${isScrolled ? "text-natural-800" : "text-white"} hover:text-earth-500`}>
+                  <a href="#about" className={`flex items-center p-2 ${isScrolled ? "text-natural-800" : "text-white"} hover:text-primary`}>
                     About
                   </a>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <a href="#testimonials" className={`flex items-center p-2 ${isScrolled ? "text-natural-800" : "text-white"} hover:text-earth-500`}>
+                  <a href="#testimonials" className={`flex items-center p-2 ${isScrolled ? "text-natural-800" : "text-white"} hover:text-primary`}>
                     Testimonials
                   </a>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <a href="#contact" className={`flex items-center p-2 ${isScrolled ? "text-natural-800" : "text-white"} hover:text-earth-500`}>
+                  <a href="#contact" className={`flex items-center p-2 ${isScrolled ? "text-natural-800" : "text-white"} hover:text-primary`}>
                     Contact
                   </a>
                 </NavigationMenuItem>
