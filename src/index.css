@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -162,5 +163,5 @@
 
 /* Dropdown menu transparent styles */
 .dropdown-transparent {
-  @apply bg-transparent backdrop-blur-md border border-white/10 text-white;
+  @apply bg-transparent backdrop-blur-md border border-white/10 text-natural-800;
 }
