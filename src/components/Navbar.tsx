@@ -39,8 +39,8 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <a href="#" className="flex items-center">
-              <span className="text-2xl md:text-3xl font-bold font-playfair text-earth-800">
-                Nature<span className="text-earth-500">Walking</span>Couch
+              <span className="text-2xl md:text-3xl font-bold font-playfair text-natural-800">
+                Nature<span className="text-primary">Walking</span>Couch
               </span>
             </a>
           </div>
@@ -92,7 +92,7 @@ const Navbar = () => {
               <Button variant="ghost" className={`rounded-full p-2 ${isScrolled ? "text-natural-800" : "text-white"} hover:bg-white/20`}>
                 <Search size={20} />
               </Button>
-              <Button className="bg-earth-500 hover:bg-earth-600 text-white">
+              <Button className="bg-primary hover:bg-primary/80 text-white">
                 <Phone size={16} className="mr-2" /> Book Now
               </Button>
             </div>
@@ -102,7 +102,7 @@ const Navbar = () => {
           <div className="lg:hidden">
             <button
               onClick={toggleMobileMenu}
-              className={`${isScrolled ? "text-natural-800" : "text-white"} hover:text-earth-500 focus:outline-none`}
+              className={`${isScrolled ? "text-natural-800" : "text-white"} hover:text-primary focus:outline-none`}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -116,39 +116,39 @@ const Navbar = () => {
               <a 
                 href="#tours" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-natural-800 hover:text-earth-500 font-medium py-2"
+                className="text-natural-800 hover:text-primary font-medium py-2"
               >
                 Destinations
               </a>
               <a 
                 href="#about" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-natural-800 hover:text-earth-500 font-medium py-2"
+                className="text-natural-800 hover:text-primary font-medium py-2"
               >
                 Tours
               </a>
               <a 
                 href="#about" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-natural-800 hover:text-earth-500 font-medium py-2"
+                className="text-natural-800 hover:text-primary font-medium py-2"
               >
                 About
               </a>
               <a 
                 href="#testimonials" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-natural-800 hover:text-earth-500 font-medium py-2"
+                className="text-natural-800 hover:text-primary font-medium py-2"
               >
                 Testimonials
               </a>
               <a 
                 href="#contact" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-natural-800 hover:text-earth-500 font-medium py-2"
+                className="text-natural-800 hover:text-primary font-medium py-2"
               >
                 Contact
               </a>
-              <Button className="bg-earth-500 hover:bg-earth-600 text-white w-full">
+              <Button className="bg-primary hover:bg-primary/80 text-white w-full">
                 Book Now
               </Button>
             </div>
