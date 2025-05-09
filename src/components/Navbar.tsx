@@ -61,7 +61,7 @@ const Navbar = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={isScrolled ? "text-natural-800" : "text-white"}>Destinations</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className={isScrolled ? "text-natural-800" : "text-black"}>Destinations</NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-white border border-gray-200 shadow-lg rounded">
                     <div className="grid gap-3 p-4 w-[400px]">
                       <Link to="/destinations#mountains" className="block p-2 hover:bg-muted rounded text-black">Mountains</Link>
@@ -72,7 +72,7 @@ const Navbar = () => {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={isScrolled ? "text-natural-800" : "text-white"}>Tours</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className={isScrolled ? "text-natural-800" : "text-black"}>Tours</NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-white border border-gray-200 shadow-lg rounded">
                     <div className="grid gap-3 p-4 w-[400px]">
                       <Link to="/tours#day-tours" className="block p-2 hover:bg-muted rounded text-black">Day Tours</Link>
@@ -85,7 +85,7 @@ const Navbar = () => {
                   <Link 
                     to="/about" 
                     className={`flex items-center p-2 ${
-                      isActive('/about') ? 'text-primary' : isScrolled ? 'text-natural-800' : 'text-white'
+                      isActive('/about') ? 'text-primary' : isScrolled ? 'text-natural-800' : 'text-black'
                     } hover:text-primary`}
                   >
                     About
@@ -95,7 +95,7 @@ const Navbar = () => {
                   <Link 
                     to="/testimonials" 
                     className={`flex items-center p-2 ${
-                      isActive('/testimonials') ? 'text-primary' : isScrolled ? 'text-natural-800' : 'text-white'
+                      isActive('/testimonials') ? 'text-primary' : isScrolled ? 'text-natural-800' : 'text-black'
                     } hover:text-primary`}
                   >
                     Testimonials
@@ -105,7 +105,7 @@ const Navbar = () => {
                   <Link 
                     to="/contact" 
                     className={`flex items-center p-2 ${
-                      isActive('/contact') ? 'text-primary' : isScrolled ? 'text-natural-800' : 'text-white'
+                      isActive('/contact') ? 'text-primary' : isScrolled ? 'text-natural-800' : 'text-black'
                     } hover:text-primary`}
                   >
                     Contact
@@ -115,7 +115,7 @@ const Navbar = () => {
             </NavigationMenu>
             
             <div className="flex items-center ml-4 space-x-3">
-              <Button variant="ghost" className={`rounded-full p-2 ${isScrolled ? "text-natural-800" : "text-white"} hover:bg-white/20`}>
+              <Button variant="ghost" className={`rounded-full p-2 ${isScrolled ? "text-natural-800" : "text-black"} hover:bg-white/20`}>
                 <Search size={20} />
               </Button>
               <Link to="/contact">
@@ -130,7 +130,7 @@ const Navbar = () => {
           <div className="lg:hidden">
             <button
               onClick={toggleMobileMenu}
-              className={`${isScrolled ? "text-natural-800" : "text-white"} hover:text-primary focus:outline-none`}
+              className={`${isScrolled ? "text-natural-800" : "text-black"} hover:text-primary focus:outline-none`}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
