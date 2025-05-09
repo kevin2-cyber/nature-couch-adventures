@@ -158,10 +158,10 @@
 
 /* Glass morphism effect for transparent elements */
 .glass {
-  @apply bg-transparent backdrop-blur-md border border-white/20 rounded-md;
+  @apply bg-white backdrop-blur-md border border-white/20 rounded-md;
 }
 
-/* Dropdown menu transparent styles */
-.dropdown-transparent {
-  @apply bg-transparent backdrop-blur-md border border-white/10 text-natural-800;
+/* Dropdown menu styles */
+.dropdown-menu {
+  @apply bg-white border border-gray-200 shadow-lg;
 }

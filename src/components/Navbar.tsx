@@ -51,22 +51,22 @@ const Navbar = () => {
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={isScrolled ? "text-natural-800" : "text-white"}>Destinations</NavigationMenuTrigger>
-                  <NavigationMenuContent className="glass dropdown-transparent">
+                  <NavigationMenuContent className="bg-white border border-gray-200 shadow-lg rounded">
                     <div className="grid gap-3 p-4 w-[400px]">
-                      <NavigationMenuLink href="#mountains" className="block p-2 hover:bg-white/20 rounded text-natural-800">Mountains</NavigationMenuLink>
-                      <NavigationMenuLink href="#forests" className="block p-2 hover:bg-white/20 rounded text-natural-800">Forests</NavigationMenuLink>
-                      <NavigationMenuLink href="#rivers" className="block p-2 hover:bg-white/20 rounded text-natural-800">Rivers</NavigationMenuLink>
-                      <NavigationMenuLink href="#coasts" className="block p-2 hover:bg-white/20 rounded text-natural-800">Coastal Areas</NavigationMenuLink>
+                      <NavigationMenuLink href="#mountains" className="block p-2 hover:bg-muted rounded text-natural-800">Mountains</NavigationMenuLink>
+                      <NavigationMenuLink href="#forests" className="block p-2 hover:bg-muted rounded text-natural-800">Forests</NavigationMenuLink>
+                      <NavigationMenuLink href="#rivers" className="block p-2 hover:bg-muted rounded text-natural-800">Rivers</NavigationMenuLink>
+                      <NavigationMenuLink href="#coasts" className="block p-2 hover:bg-muted rounded text-natural-800">Coastal Areas</NavigationMenuLink>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={isScrolled ? "text-natural-800" : "text-white"}>Tours</NavigationMenuTrigger>
-                  <NavigationMenuContent className="glass dropdown-transparent">
+                  <NavigationMenuContent className="bg-white border border-gray-200 shadow-lg rounded">
                     <div className="grid gap-3 p-4 w-[400px]">
-                      <NavigationMenuLink href="#day-tours" className="block p-2 hover:bg-white/20 rounded text-natural-800">Day Tours</NavigationMenuLink>
-                      <NavigationMenuLink href="#multi-day" className="block p-2 hover:bg-white/20 rounded text-natural-800">Multi-Day Adventures</NavigationMenuLink>
-                      <NavigationMenuLink href="#custom" className="block p-2 hover:bg-white/20 rounded text-natural-800">Custom Experiences</NavigationMenuLink>
+                      <NavigationMenuLink href="#day-tours" className="block p-2 hover:bg-muted rounded text-natural-800">Day Tours</NavigationMenuLink>
+                      <NavigationMenuLink href="#multi-day" className="block p-2 hover:bg-muted rounded text-natural-800">Multi-Day Adventures</NavigationMenuLink>
+                      <NavigationMenuLink href="#custom" className="block p-2 hover:bg-muted rounded text-natural-800">Custom Experiences</NavigationMenuLink>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -111,7 +111,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 glass dropdown-transparent shadow-lg py-4 px-4 animate-fade-in">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-lg py-4 px-4 animate-fade-in">
             <div className="flex flex-col space-y-4">
               <a 
                 href="#tours" 
