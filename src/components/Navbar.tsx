@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Search, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from "@/components/ui/navigation-menu";
@@ -7,6 +8,7 @@ import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuT
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,8 +25,17 @@ const Navbar = () => {
     };
   }, []);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
   };
 
   return (
@@ -38,11 +49,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <a href="#" className="flex items-center">
+            <Link to="/" className="flex items-center">
               <span className="text-2xl md:text-3xl font-bold font-playfair text-natural-800">
                 Nature<span className="text-primary">Walking</span>Couch
               </span>
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -53,10 +64,10 @@ const Navbar = () => {
                   <NavigationMenuTrigger className={isScrolled ? "text-natural-800" : "text-white"}>Destinations</NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-white border border-gray-200 shadow-lg rounded">
                     <div className="grid gap-3 p-4 w-[400px]">
-                      <NavigationMenuLink href="#mountains" className="block p-2 hover:bg-muted rounded text-natural-800">Mountains</NavigationMenuLink>
-                      <NavigationMenuLink href="#forests" className="block p-2 hover:bg-muted rounded text-natural-800">Forests</NavigationMenuLink>
-                      <NavigationMenuLink href="#rivers" className="block p-2 hover:bg-muted rounded text-natural-800">Rivers</NavigationMenuLink>
-                      <NavigationMenuLink href="#coasts" className="block p-2 hover:bg-muted rounded text-natural-800">Coastal Areas</NavigationMenuLink>
+                      <Link to="/destinations#mountains" className="block p-2 hover:bg-muted rounded text-natural-800">Mountains</Link>
+                      <Link to="/destinations#forests" className="block p-2 hover:bg-muted rounded text-natural-800">Forests</Link>
+                      <Link to="/destinations#rivers" className="block p-2 hover:bg-muted rounded text-natural-800">Rivers</Link>
+                      <Link to="/destinations#coasts" className="block p-2 hover:bg-muted rounded text-natural-800">Coastal Areas</Link>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -64,26 +75,41 @@ const Navbar = () => {
                   <NavigationMenuTrigger className={isScrolled ? "text-natural-800" : "text-white"}>Tours</NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-white border border-gray-200 shadow-lg rounded">
                     <div className="grid gap-3 p-4 w-[400px]">
-                      <NavigationMenuLink href="#day-tours" className="block p-2 hover:bg-muted rounded text-natural-800">Day Tours</NavigationMenuLink>
-                      <NavigationMenuLink href="#multi-day" className="block p-2 hover:bg-muted rounded text-natural-800">Multi-Day Adventures</NavigationMenuLink>
-                      <NavigationMenuLink href="#custom" className="block p-2 hover:bg-muted rounded text-natural-800">Custom Experiences</NavigationMenuLink>
+                      <Link to="/tours#day-tours" className="block p-2 hover:bg-muted rounded text-natural-800">Day Tours</Link>
+                      <Link to="/tours#multi-day" className="block p-2 hover:bg-muted rounded text-natural-800">Multi-Day Adventures</Link>
+                      <Link to="/tours#custom" className="block p-2 hover:bg-muted rounded text-natural-800">Custom Experiences</Link>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <a href="#about" className={`flex items-center p-2 ${isScrolled ? "text-natural-800" : "text-white"} hover:text-primary`}>
+                  <Link 
+                    to="/about" 
+                    className={`flex items-center p-2 ${
+                      isActive('/about') ? 'text-primary' : isScrolled ? 'text-natural-800' : 'text-white'
+                    } hover:text-primary`}
+                  >
                     About
-                  </a>
+                  </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <a href="#testimonials" className={`flex items-center p-2 ${isScrolled ? "text-natural-800" : "text-white"} hover:text-primary`}>
+                  <Link 
+                    to="/testimonials" 
+                    className={`flex items-center p-2 ${
+                      isActive('/testimonials') ? 'text-primary' : isScrolled ? 'text-natural-800' : 'text-white'
+                    } hover:text-primary`}
+                  >
                     Testimonials
-                  </a>
+                  </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <a href="#contact" className={`flex items-center p-2 ${isScrolled ? "text-natural-800" : "text-white"} hover:text-primary`}>
+                  <Link 
+                    to="/contact" 
+                    className={`flex items-center p-2 ${
+                      isActive('/contact') ? 'text-primary' : isScrolled ? 'text-natural-800' : 'text-white'
+                    } hover:text-primary`}
+                  >
                     Contact
-                  </a>
+                  </Link>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
@@ -92,9 +118,11 @@ const Navbar = () => {
               <Button variant="ghost" className={`rounded-full p-2 ${isScrolled ? "text-natural-800" : "text-white"} hover:bg-white/20`}>
                 <Search size={20} />
               </Button>
-              <Button className="bg-primary hover:bg-primary/80 text-white">
-                <Phone size={16} className="mr-2" /> Book Now
-              </Button>
+              <Link to="/contact">
+                <Button className="bg-primary hover:bg-primary/80 text-white">
+                  <Phone size={16} className="mr-2" /> Book Now
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -113,44 +141,41 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-lg py-4 px-4 animate-fade-in">
             <div className="flex flex-col space-y-4">
-              <a 
-                href="#tours" 
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-natural-800 hover:text-primary font-medium py-2"
+              <Link 
+                to="/destinations" 
+                className={`text-natural-800 hover:text-primary font-medium py-2 ${isActive('/destinations') ? 'text-primary' : ''}`}
               >
                 Destinations
-              </a>
-              <a 
-                href="#about" 
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-natural-800 hover:text-primary font-medium py-2"
+              </Link>
+              <Link 
+                to="/tours" 
+                className={`text-natural-800 hover:text-primary font-medium py-2 ${isActive('/tours') ? 'text-primary' : ''}`}
               >
                 Tours
-              </a>
-              <a 
-                href="#about" 
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-natural-800 hover:text-primary font-medium py-2"
+              </Link>
+              <Link 
+                to="/about" 
+                className={`text-natural-800 hover:text-primary font-medium py-2 ${isActive('/about') ? 'text-primary' : ''}`}
               >
                 About
-              </a>
-              <a 
-                href="#testimonials" 
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-natural-800 hover:text-primary font-medium py-2"
+              </Link>
+              <Link 
+                to="/testimonials" 
+                className={`text-natural-800 hover:text-primary font-medium py-2 ${isActive('/testimonials') ? 'text-primary' : ''}`}
               >
                 Testimonials
-              </a>
-              <a 
-                href="#contact" 
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-natural-800 hover:text-primary font-medium py-2"
+              </Link>
+              <Link 
+                to="/contact" 
+                className={`text-natural-800 hover:text-primary font-medium py-2 ${isActive('/contact') ? 'text-primary' : ''}`}
               >
                 Contact
-              </a>
-              <Button className="bg-primary hover:bg-primary/80 text-white w-full">
-                Book Now
-              </Button>
+              </Link>
+              <Link to="/contact">
+                <Button className="bg-primary hover:bg-primary/80 text-white w-full">
+                  Book Now
+                </Button>
+              </Link>
             </div>
           </div>
         )}
