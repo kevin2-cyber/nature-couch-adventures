@@ -64,10 +64,10 @@ const Navbar = () => {
                   <NavigationMenuTrigger className={isScrolled ? "text-natural-800" : "text-white"}>Destinations</NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-white border border-gray-200 shadow-lg rounded">
                     <div className="grid gap-3 p-4 w-[400px]">
-                      <Link to="/destinations#mountains" className="block p-2 hover:bg-muted rounded text-natural-800">Mountains</Link>
-                      <Link to="/destinations#forests" className="block p-2 hover:bg-muted rounded text-natural-800">Forests</Link>
-                      <Link to="/destinations#rivers" className="block p-2 hover:bg-muted rounded text-natural-800">Rivers</Link>
-                      <Link to="/destinations#coasts" className="block p-2 hover:bg-muted rounded text-natural-800">Coastal Areas</Link>
+                      <Link to="/destinations#mountains" className="block p-2 hover:bg-muted rounded text-black">Mountains</Link>
+                      <Link to="/destinations#forests" className="block p-2 hover:bg-muted rounded text-black">Forests</Link>
+                      <Link to="/destinations#rivers" className="block p-2 hover:bg-muted rounded text-black">Rivers</Link>
+                      <Link to="/destinations#coasts" className="block p-2 hover:bg-muted rounded text-black">Coastal Areas</Link>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -75,9 +75,9 @@ const Navbar = () => {
                   <NavigationMenuTrigger className={isScrolled ? "text-natural-800" : "text-white"}>Tours</NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-white border border-gray-200 shadow-lg rounded">
                     <div className="grid gap-3 p-4 w-[400px]">
-                      <Link to="/tours#day-tours" className="block p-2 hover:bg-muted rounded text-natural-800">Day Tours</Link>
-                      <Link to="/tours#multi-day" className="block p-2 hover:bg-muted rounded text-natural-800">Multi-Day Adventures</Link>
-                      <Link to="/tours#custom" className="block p-2 hover:bg-muted rounded text-natural-800">Custom Experiences</Link>
+                      <Link to="/tours#day-tours" className="block p-2 hover:bg-muted rounded text-black">Day Tours</Link>
+                      <Link to="/tours#multi-day" className="block p-2 hover:bg-muted rounded text-black">Multi-Day Adventures</Link>
+                      <Link to="/tours#custom" className="block p-2 hover:bg-muted rounded text-black">Custom Experiences</Link>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
