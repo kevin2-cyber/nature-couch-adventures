@@ -18,7 +18,7 @@ const Hero = () => {
       <div 
         className="relative h-screen w-full bg-cover bg-center flex items-center"
         style={{ 
-          backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://www.modernghana.com/images/content/23052021063458_osucast.jpg')",
+          backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1565986864206-37594f73ab14?q=80&w=2070&auto=format&fit=crop')",
           backgroundAttachment: "fixed"
         }}
       >
