@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Tour from "@/components/tours/Tour";
 import { tours } from "@/data/tourData";
+import { Link } from "react-router-dom";
 
 const ToursSection: React.FC = () => {
   return (
@@ -17,8 +18,10 @@ const ToursSection: React.FC = () => {
             </p>
           </div>
           <div className="mt-6 md:mt-0 animate-on-scroll">
-            <Button variant="outline" className="border-2 border-earth-600 text-earth-600 hover:bg-earth-600 hover:text-white">
-              All Tours <ArrowRight size={16} className="ml-2" />
+            <Button variant="outline" className="border-2 border-earth-600 text-earth-600 hover:bg-earth-600 hover:text-white" asChild>
+              <Link to="/tours">
+                All Tours <ArrowRight size={16} className="ml-2" />
+              </Link>
             </Button>
           </div>
         </div>

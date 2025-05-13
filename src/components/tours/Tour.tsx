@@ -3,8 +3,10 @@ import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Mountain } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export interface TourProps {
+  id: string;
   title: string;
   image: string;
   duration: string;
@@ -15,6 +17,7 @@ export interface TourProps {
 }
 
 const Tour: React.FC<TourProps> = ({ 
+  id,
   title, 
   image, 
   duration, 
@@ -23,9 +26,15 @@ const Tour: React.FC<TourProps> = ({
   price, 
   description 
 }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/tours/${id}`);
+  };
+
   return (
     <Card className="tour-card overflow-hidden border border-border rounded-lg h-full flex flex-col">
-      <div className="relative h-64 overflow-hidden">
+      <div className="relative h-64 overflow-hidden cursor-pointer" onClick={handleClick}>
         <img 
           src={image} 
           alt={title} 
@@ -36,7 +45,7 @@ const Tour: React.FC<TourProps> = ({
         </div>
       </div>
       <CardContent className="p-5 flex-grow flex flex-col">
-        <h3 className="text-xl font-bold mb-2 font-playfair">{title}</h3>
+        <h3 className="text-xl font-bold mb-2 font-playfair cursor-pointer hover:text-earth-600" onClick={handleClick}>{title}</h3>
         <p className="text-muted-foreground mb-4 flex-grow">
           {description}
         </p>
@@ -54,7 +63,10 @@ const Tour: React.FC<TourProps> = ({
             <span className="text-sm">Difficulty: {difficulty}</span>
           </div>
         </div>
-        <Button className="w-full bg-earth-600 hover:bg-earth-700 text-white">
+        <Button 
+          className="w-full bg-earth-600 hover:bg-earth-700 text-white"
+          onClick={handleClick}
+        >
           Book This Tour
         </Button>
       </CardContent>
