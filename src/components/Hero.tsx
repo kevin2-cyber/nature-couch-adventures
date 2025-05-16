@@ -1,10 +1,29 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  const backgroundImages = [
+    "https://images.unsplash.com/photo-1565986864206-37594f73ab14?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1614555383820-941c244cf6a3?auto=format&fit=crop&q=80",
+    "https://upload.wikimedia.org/wikipedia/commons/e/e1/Mole_motel.jpg", 
+    "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        (prevIndex + 1) % backgroundImages.length
+      );
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollToTours = () => {
     const toursSection = document.getElementById("tours");
     if (toursSection) {
@@ -16,9 +35,9 @@ const Hero = () => {
     <div className="relative">
       {/* Main hero slider/banner */}
       <div 
-        className="relative h-screen w-full bg-cover bg-center flex items-center"
+        className="relative h-screen w-full bg-cover bg-center flex items-center transition-all duration-1000 ease-in-out"
         style={{ 
-          backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1565986864206-37594f73ab14?q=80&w=2070&auto=format&fit=crop')",
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${backgroundImages[currentImageIndex]}')`,
           backgroundAttachment: "fixed"
         }}
       >
@@ -38,16 +57,29 @@ const Hero = () => {
                   Explore Destinations
                 </Button>
               </Link>
-              <Link to="/tours">
-                <Button 
-                  variant="outline" 
-                  className="bg-transparent border-2 border-white hover:bg-white/20 text-white hover:text-white text-lg py-6 px-8"
-                >
-                  Plan Your Trip
-                </Button>
-              </Link>
+              <Button 
+                variant="outline" 
+                className="bg-transparent border-2 border-white hover:bg-white/20 text-white hover:text-white text-lg py-6 px-8"
+                onClick={scrollToTours}
+              >
+                View Tours
+              </Button>
             </div>
           </div>
+        </div>
+        
+        {/* Image indicators */}
+        <div className="absolute bottom-6 left-0 w-full flex justify-center gap-2">
+          {backgroundImages.map((_, index) => (
+            <button 
+              key={index}
+              className={`h-2 rounded-full transition-all ${
+                currentImageIndex === index ? "w-8 bg-white" : "w-2 bg-white/50"
+              }`}
+              onClick={() => setCurrentImageIndex(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
 
