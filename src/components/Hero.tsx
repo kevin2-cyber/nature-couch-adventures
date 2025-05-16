@@ -10,8 +10,8 @@ const Hero = () => {
   const backgroundImages = [
     "https://images.unsplash.com/photo-1565986864206-37594f73ab14?q=80&w=2070&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1614555383820-941c244cf6a3?auto=format&fit=crop&q=80",
-    "https://upload.wikimedia.org/wikipedia/commons/e/e1/Mole_motel.jpg", 
-    "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80"
+    "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1493962853295-0fd70327578a?auto=format&fit=crop&q=80"
   ];
 
   useEffect(() => {
