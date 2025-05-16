@@ -11,8 +11,10 @@ const tours = [
     title: "Kakum National Park Canopy Walk",
     image: "https://images.unsplash.com/photo-1465695954255-a262b0f57b40?auto=format&fit=crop&q=80",
     duration: "1 day",
-    price: 75,
+    price: "$75",
     location: "Central Region",
+    difficulty: "Easy",
+    description: "Experience walking through the treetops on suspended bridges in Ghana's famous rainforest.",
     rating: 4.8
   },
   {
@@ -20,8 +22,10 @@ const tours = [
     title: "Mole National Park Safari",
     image: "https://images.unsplash.com/photo-1493962853295-0fd70327578a?auto=format&fit=crop&q=80",
     duration: "3 days",
-    price: 350,
+    price: "$350",
     location: "Northern Region",
+    difficulty: "Moderate",
+    description: "Encounter elephants, antelopes and many bird species in Ghana's largest wildlife refuge.",
     rating: 4.9
   },
   {
@@ -29,8 +33,10 @@ const tours = [
     title: "Lake Volta Boat Tour",
     image: "https://images.unsplash.com/photo-1475070929565-c985b496cb9f?auto=format&fit=crop&q=80",
     duration: "2 days",
-    price: 180,
+    price: "$180",
     location: "Volta Region",
+    difficulty: "Easy",
+    description: "Cruise along Africa's largest artificial lake and enjoy breathtaking views of surrounding landscapes.",
     rating: 4.6
   }
 ];
