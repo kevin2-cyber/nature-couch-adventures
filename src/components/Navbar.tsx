@@ -50,8 +50,8 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <span className="text-2xl md:text-3xl font-bold font-playfair text-natural-800">
-                Nature<span className="text-primary">Walking</span>Coach
+              <span className="text-2xl md:text-3xl font-bold font-playfair text-natural-300">
+                Nature<span className="text-cyan-700">Walking</span>Coach
               </span>
             </Link>
           </div>

@@ -3,21 +3,18 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import randomImages  from "@/background";
+//use the exported random images as a background image
 
 const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
-  const backgroundImages = [
-    "https://images.unsplash.com/photo-1565986864206-37594f73ab14?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1614555383820-941c244cf6a3?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1493962853295-0fd70327578a?auto=format&fit=crop&q=80"
-  ];
+  const backgroundImages = randomImages;
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => 
-        (prevIndex + 1) % backgroundImages.length
+        (prevIndex + 1) % backgroundImages.randomImages.length
       );
     }, 5000); // Change image every 5 seconds
 
@@ -37,7 +34,7 @@ const Hero = () => {
       <div 
         className="relative h-screen w-full bg-cover bg-center flex items-center transition-all duration-1000 ease-in-out"
         style={{ 
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${backgroundImages[currentImageIndex]}')`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${backgroundImages.randomImages[currentImageIndex]}')`,
           backgroundAttachment: "fixed"
         }}
       >
@@ -70,7 +67,7 @@ const Hero = () => {
         
         {/* Image indicators */}
         <div className="absolute bottom-6 left-0 w-full flex justify-center gap-2">
-          {backgroundImages.map((_, index) => (
+          {backgroundImages.randomImages.map((_, index) => (
             <button 
               key={index}
               className={`h-2 rounded-full transition-all ${
