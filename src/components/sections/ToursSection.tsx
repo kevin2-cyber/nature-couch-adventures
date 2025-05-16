@@ -4,12 +4,13 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Tour from "@/components/tours/Tour";
 import { Link } from "react-router-dom";
+import backgroundUtils from "@/background";
 
 const tours = [
   {
     id: "1",
     title: "Kakum National Park Canopy Walk",
-    image: "https://images.unsplash.com/photo-1465695954255-a262b0f57b40?auto=format&fit=crop&q=80",
+    image: backgroundUtils.getTourImageByTitle("Kakum National Park Canopy Walk"),
     duration: "1 day",
     price: "$75",
     location: "Central Region",
@@ -20,7 +21,7 @@ const tours = [
   {
     id: "2",
     title: "Mole National Park Safari",
-    image: "https://images.unsplash.com/photo-1493962853295-0fd70327578a?auto=format&fit=crop&q=80",
+    image: backgroundUtils.getTourImageByTitle("Mole National Park Safari"),
     duration: "3 days",
     price: "$350",
     location: "Northern Region",
@@ -31,7 +32,7 @@ const tours = [
   {
     id: "3",
     title: "Lake Volta Boat Tour",
-    image: "https://images.unsplash.com/photo-1475070929565-c985b496cb9f?auto=format&fit=crop&q=80",
+    image: backgroundUtils.getTourImageByTitle("Lake Volta Boat Tour"),
     duration: "2 days",
     price: "$180",
     location: "Volta Region",

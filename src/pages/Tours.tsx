@@ -1,8 +1,8 @@
-
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import backgroundUtils from "@/background";
 
 const Tours = () => {
   return (
@@ -17,7 +17,7 @@ const Tours = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="tour-card rounded-lg overflow-hidden shadow-lg">
                 <img 
-                  src="https://images.unsplash.com/photo-1614555383820-941c244cf6a3?auto=format&fit=crop&q=80" 
+                  src={backgroundUtils.getTourImageByTitle("Cape Coast Castle Tour")} 
                   alt="Cape Coast Castle"
                   className="w-full h-64 object-cover"
                 />
@@ -37,7 +37,7 @@ const Tours = () => {
               
               <div className="tour-card rounded-lg overflow-hidden shadow-lg">
                 <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/7/77/Elmina_Castle.jpg" 
+                  src={backgroundUtils.getTourImageByTitle("Elmina Castle Experience")} 
                   alt="Elmina Castle"
                   className="w-full h-64 object-cover"
                 />
@@ -62,7 +62,7 @@ const Tours = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="tour-card rounded-lg overflow-hidden shadow-lg">
                 <img 
-                  src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&q=80" 
+                  src={backgroundUtils.getTourImageByTitle("Kakum Canopy Walk")} 
                   alt="Kakum Canopy Walk"
                   className="w-full h-64 object-cover"
                 />
@@ -82,7 +82,7 @@ const Tours = () => {
               
               <div className="tour-card rounded-lg overflow-hidden shadow-lg">
                 <img 
-                  src="https://images.unsplash.com/photo-1548429930-a44f33c5f919?auto=format&fit=crop&q=80" 
+                  src={backgroundUtils.getTourImageByTitle("Wli Waterfall Hike")} 
                   alt="Wli Waterfall"
                   className="w-full h-64 object-cover"
                 />
@@ -102,7 +102,7 @@ const Tours = () => {
               
               <div className="tour-card rounded-lg overflow-hidden shadow-lg">
                 <img 
-                  src="https://images.unsplash.com/photo-1571152571837-7d8540ad8d30?auto=format&fit=crop&q=80" 
+                  src={backgroundUtils.getTourImageByTitle("Lake Bosumtwi Excursion")} 
                   alt="Lake Bosumtwi"
                   className="w-full h-64 object-cover"
                 />
@@ -127,7 +127,7 @@ const Tours = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="tour-card rounded-lg overflow-hidden shadow-lg">
                 <img 
-                  src="https://images.unsplash.com/photo-1599912027806-cfec9f5944b6?auto=format&fit=crop&q=80" 
+                  src={backgroundUtils.getTourImageByTitle("Ashanti Cultural Tour")} 
                   alt="Ashanti Cultural Tour"
                   className="w-full h-64 object-cover"
                 />
@@ -147,7 +147,7 @@ const Tours = () => {
               
               <div className="tour-card rounded-lg overflow-hidden shadow-lg">
                 <img 
-                  src="https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&q=80" 
+                  src={backgroundUtils.getTourImageByTitle("Kente Weaving Experience")} 
                   alt="Kente Weaving Village"
                   className="w-full h-64 object-cover"
                 />
@@ -172,7 +172,7 @@ const Tours = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="tour-card rounded-lg overflow-hidden shadow-lg">
                 <img 
-                  src="https://images.unsplash.com/photo-1565026057757-5a76d33f8311?auto=format&fit=crop&q=80" 
+                  src={backgroundUtils.getTourImageByTitle("Northern Ghana Safari")} 
                   alt="Northern Ghana Safari"
                   className="w-full h-64 object-cover"
                 />
@@ -192,7 +192,7 @@ const Tours = () => {
               
               <div className="tour-card rounded-lg overflow-hidden shadow-lg">
                 <img 
-                  src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80" 
+                  src={backgroundUtils.getTourImageByTitle("Ghana Heritage Trail")} 
                   alt="Ghana Heritage Tour"
                   className="w-full h-64 object-cover"
                 />
