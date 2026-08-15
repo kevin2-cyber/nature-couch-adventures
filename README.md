@@ -1,73 +1,87 @@
-# Welcome to your Lovable project
+# Canteen Pre-Order & Inventory Portal
 
-## Project info
+A web frontend for pre-ordering meals from a campus canteen: customers browse the live menu, add items to a cart, pick a same-day pickup slot and place an order; canteen staff manage the menu, stock levels and the incoming order queue.
 
-**URL**: https://lovable.dev/projects/5b7e6d98-88a7-4163-b993-7ce936972592
+This is the React client for the [`canteen-preorder-portal`](https://github.com/kevin2-cyber/canteen-preorder-portal) Spring Boot API — it has no backend of its own and talks to that service over a session-cookie-authenticated REST API.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+**Customer**
+- Browse the active menu by category, with photos, stock status and low-stock warnings
+- Cart with live quantity limits against available stock
+- Checkout against real-time pickup time slots (respecting canteen operating hours/lead time)
+- Order confirmation with a shareable order code
+- Track any order by its code, no login required
+- Account area: register/login, order history
 
-**Use Lovable**
+**Vendor (staff)**
+- Separate staff login, scoped to `/vendor` routes
+- Menu management: create/edit items, set stock, activate/deactivate, set a photo URL
+- Order queue: view active or all orders, advance status (`PENDING → PREPARING → READY_FOR_PICKUP → COMPLETED`, or cancel)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5b7e6d98-88a7-4163-b993-7ce936972592) and start prompting.
+## Tech stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- [Vite](https://vitejs.dev/) + [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [React Router](https://reactrouter.com/) for client-side routing
+- [Tailwind CSS](https://tailwindcss.com/) with a small set of hand-built, shadcn-style UI primitives (`src/components/ui`)
+- [lucide-react](https://lucide.dev/) for icons
+- Plain `fetch` wrapper (`src/lib/api.ts`) — no data-fetching library; auth state lives in React context (`src/context`)
 
-**Use your preferred IDE**
+## Getting started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Requires Node.js/npm, and the backend running locally on port 8080 (see the backend repo for setup — it needs a PostgreSQL database).
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The dev server runs at `http://localhost:5173` and proxies `/api` and `/images` to `http://localhost:8080` (see `vite.config.ts`), so the browser only ever talks to one origin and the backend's session cookie works without CORS configuration.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Other scripts:
 
-**Use GitHub Codespaces**
+```sh
+npm run build     # tsc -b && vite build
+npm run preview   # preview a production build locally
+npm run lint      # eslint
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Seeded accounts
 
-## What technologies are used for this project?
+The backend's `DataSeeder` creates these on first run:
 
-This project is built with:
+| Role     | Username/Email            | Password    |
+|----------|----------------------------|-------------|
+| Customer | `student@example.com`      | `student123`|
+| Vendor   | `vendor`                   | `canteen123`|
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Project structure
 
-## How can I deploy this project?
+```
+src/
+├── pages/
+│   ├── customer/    # MenuPage, CheckoutPage, OrderDetailPage, OrderLookupPage, MyOrdersPage, Login/Register
+│   └── vendor/      # VendorLoginPage, VendorMenuPage, VendorOrdersPage
+├── components/
+│   ├── layout/      # CustomerLayout, VendorLayout, ProtectedRoute
+│   ├── menu/ orders/ # MenuItemCard, OrderStatusBadge
+│   └── ui/           # Button, Card, Input, Badge, Spinner, EmptyState, icons
+├── context/          # CustomerAuthContext, VendorAuthContext, CartContext, ToastContext
+└── lib/
+    ├── api.ts        # fetch wrapper (credentials, error shapes, 401 handling)
+    ├── endpoints.ts   # typed calls per backend controller
+    ├── types.ts       # DTOs mirrored from the backend
+    └── utils.ts
+```
 
-Simply open [Lovable](https://lovable.dev/projects/5b7e6d98-88a7-4163-b993-7ce936972592) and click on Share -> Publish.
+## Deployment
 
-## Can I connect a custom domain to my Lovable project?
+The frontend and backend are deployed separately. In production, either:
 
-Yes, you can!
+- proxy `/api` and `/images` from the frontend host to the backend (e.g. Vercel/Netlify rewrites), keeping requests same-origin so the session cookie works without CORS, or
+- enable CORS with credentials on the backend and point `vite.config.ts`'s proxy targets (or an equivalent runtime config) at the deployed backend URL.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Notes
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- Menu photos are served by the backend from `/images/menu/*` (bundled under its `static` resources); vendors can also set an external photo URL when creating/editing an item.
+- There's no vendor "who am I" endpoint on the backend, so the vendor session is optimistically cached in `sessionStorage` after login and cleared on any `401` from a `/vendor/*` call (see `VendorAuthContext`).
