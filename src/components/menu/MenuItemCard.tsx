@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { useCart } from "@/context/CartContext";
 import { useToast } from "@/context/ToastContext";
 import { formatCurrency } from "@/lib/utils";
+import { Utensils } from "@/components/ui/icons";
 import type { MenuItem } from "@/lib/types";
 
 export const MenuItemCard = ({ item }: { item: MenuItem }) => {
@@ -23,7 +24,21 @@ export const MenuItemCard = ({ item }: { item: MenuItem }) => {
   };
 
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col overflow-hidden">
+      <div className="aspect-[4/3] w-full bg-muted">
+        {item.imageUrl ? (
+          <img
+            src={item.imageUrl}
+            alt={item.name}
+            loading="lazy"
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-muted-foreground">
+            <Utensils className="h-8 w-8" />
+          </div>
+        )}
+      </div>
       <CardContent className="flex flex-1 flex-col gap-3 p-4">
         <div className="flex items-start justify-between gap-2">
           <h3 className="font-semibold leading-tight">{item.name}</h3>

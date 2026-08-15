@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Input, Label, Textarea } from "@/components/ui/Input";
 import { Badge } from "@/components/ui/Badge";
 import { PageSpinner } from "@/components/ui/Spinner";
-import { Pencil, Plus, X } from "@/components/ui/icons";
+import { Pencil, Plus, Utensils, X } from "@/components/ui/icons";
 import { useToast } from "@/context/ToastContext";
 import { formatCurrency } from "@/lib/utils";
 import { ApiRequestError } from "@/lib/api";
@@ -17,9 +17,17 @@ interface ItemFormState {
   category: string;
   price: string;
   availableQuantity: string;
+  imageUrl: string;
 }
 
-const EMPTY_FORM: ItemFormState = { name: "", description: "", category: "", price: "", availableQuantity: "" };
+const EMPTY_FORM: ItemFormState = {
+  name: "",
+  description: "",
+  category: "",
+  price: "",
+  availableQuantity: "",
+  imageUrl: "",
+};
 
 export const VendorMenuPage = () => {
   const [items, setItems] = useState<MenuItem[] | null>(null);
@@ -62,6 +70,7 @@ export const VendorMenuPage = () => {
               category: form.category,
               price: Number(form.price),
               availableQuantity: Number(form.availableQuantity),
+              imageUrl: form.imageUrl || undefined,
             });
             showToast("Menu item created", "success");
             setShowCreate(false);
@@ -81,6 +90,7 @@ export const VendorMenuPage = () => {
                 category: item.category,
                 price: item.price,
                 availableQuantity: String(item.availableQuantity),
+                imageUrl: item.imageUrl ?? "",
               }}
               onCancel={() => setEditingId(null)}
               onSubmit={async (form) => {
@@ -90,6 +100,7 @@ export const VendorMenuPage = () => {
                   category: form.category,
                   price: Number(form.price),
                   availableQuantity: Number(form.availableQuantity),
+                  imageUrl: form.imageUrl || undefined,
                 });
                 showToast("Menu item updated", "success");
                 setEditingId(null);
@@ -143,13 +154,24 @@ const MenuItemRow = ({ item, onEdit, onChanged }: { item: MenuItem; onEdit: () =
     <Card>
       <CardContent className="p-4 flex flex-col gap-3">
         <div className="flex items-start justify-between gap-2">
-          <div>
-            <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="font-semibold">{item.name}</h3>
-              <Badge variant="muted">{item.category}</Badge>
-              {!item.active && <Badge variant="destructive">Inactive</Badge>}
+          <div className="flex items-start gap-3">
+            <div className="h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-muted">
+              {item.imageUrl ? (
+                <img src={item.imageUrl} alt={item.name} className="h-full w-full object-cover" />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center text-muted-foreground">
+                  <Utensils className="h-5 w-5" />
+                </div>
+              )}
             </div>
-            {item.description && <p className="text-sm text-muted-foreground mt-0.5">{item.description}</p>}
+            <div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="font-semibold">{item.name}</h3>
+                <Badge variant="muted">{item.category}</Badge>
+                {!item.active && <Badge variant="destructive">Inactive</Badge>}
+              </div>
+              {item.description && <p className="text-sm text-muted-foreground mt-0.5">{item.description}</p>}
+            </div>
           </div>
           <Button variant="ghost" size="icon" onClick={onEdit}>
             <Pencil className="h-4 w-4" />
@@ -277,6 +299,17 @@ const MenuItemForm = ({
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
               error={fieldErrors.description}
+            />
+          </div>
+          <div>
+            <Label htmlFor="imageUrl">Photo URL (optional)</Label>
+            <Input
+              id="imageUrl"
+              type="url"
+              placeholder="https://..."
+              value={form.imageUrl}
+              onChange={(e) => setForm({ ...form, imageUrl: e.target.value })}
+              error={fieldErrors.imageUrl}
             />
           </div>
           {error && <p className="text-sm text-destructive">{error}</p>}

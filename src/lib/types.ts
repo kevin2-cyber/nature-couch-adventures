@@ -9,6 +9,7 @@ export interface MenuItem {
   availableQuantity: number;
   active: boolean;
   inStock: boolean;
+  imageUrl: string | null;
 }
 
 export type OrderStatus = "PENDING" | "PREPARING" | "READY_FOR_PICKUP" | "COMPLETED" | "CANCELLED";
@@ -92,6 +93,7 @@ export interface MenuItemRequest {
   category: string;
   price: number;
   availableQuantity: number;
+  imageUrl?: string;
 }
 
 export interface StockUpdateRequest {
