@@ -1,40 +1,61 @@
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { CustomerAuthProvider } from "@/context/CustomerAuthContext";
+import { VendorAuthProvider } from "@/context/VendorAuthContext";
+import { CartProvider } from "@/context/CartContext";
+import { ToastProvider } from "@/context/ToastContext";
+import { CustomerLayout } from "@/components/layout/CustomerLayout";
+import { VendorLayout } from "@/components/layout/VendorLayout";
+import { CustomerProtectedRoute, VendorProtectedRoute } from "@/components/layout/ProtectedRoute";
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import Destinations from "./pages/Destinations";
-import Tours from "./pages/Tours";
-import TourDetail from "./pages/TourDetail";
-import About from "./pages/About";
-import Testimonials from "./pages/Testimonials";
-import Contact from "./pages/Contact";
+import { MenuPage } from "@/pages/customer/MenuPage";
+import { LoginPage } from "@/pages/customer/LoginPage";
+import { RegisterPage } from "@/pages/customer/RegisterPage";
+import { CheckoutPage } from "@/pages/customer/CheckoutPage";
+import { OrderDetailPage } from "@/pages/customer/OrderDetailPage";
+import { OrderLookupPage } from "@/pages/customer/OrderLookupPage";
+import { MyOrdersPage } from "@/pages/customer/MyOrdersPage";
 
-const queryClient = new QueryClient();
+import { VendorLoginPage } from "@/pages/vendor/VendorLoginPage";
+import { VendorOrdersPage } from "@/pages/vendor/VendorOrdersPage";
+import { VendorMenuPage } from "@/pages/vendor/VendorMenuPage";
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/destinations" element={<Destinations />} />
-          <Route path="/tours" element={<Tours />} />
-          <Route path="/tours/:id" element={<TourDetail />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/testimonials" element={<Testimonials />} />
-          <Route path="/contact" element={<Contact />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+import { NotFoundPage } from "@/pages/NotFoundPage";
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <ToastProvider>
+        <CustomerAuthProvider>
+          <VendorAuthProvider>
+            <CartProvider>
+              <Routes>
+                <Route element={<CustomerLayout />}>
+                  <Route path="/" element={<MenuPage />} />
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/register" element={<RegisterPage />} />
+                  <Route path="/checkout" element={<CheckoutPage />} />
+                  <Route path="/track" element={<OrderLookupPage />} />
+                  <Route path="/orders/:code" element={<OrderDetailPage />} />
+                  <Route element={<CustomerProtectedRoute />}>
+                    <Route path="/orders" element={<MyOrdersPage />} />
+                  </Route>
+                </Route>
+
+                <Route path="/vendor/login" element={<VendorLoginPage />} />
+                <Route element={<VendorProtectedRoute />}>
+                  <Route element={<VendorLayout />}>
+                    <Route path="/vendor" element={<Navigate to="/vendor/orders" replace />} />
+                    <Route path="/vendor/orders" element={<VendorOrdersPage />} />
+                    <Route path="/vendor/menu" element={<VendorMenuPage />} />
+                  </Route>
+                </Route>
+
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+            </CartProvider>
+          </VendorAuthProvider>
+        </CustomerAuthProvider>
+      </ToastProvider>
+    </BrowserRouter>
+  );
+}
